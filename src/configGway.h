@@ -156,7 +156,7 @@
 //	4: ESP32, Heltec and TTGO pin out (should work for Heltec, 433 and Oled too).
 //	5: Other, define your own in loraModem.h (does not include GPS Code)
 #if !defined _PIN_OUT
-#	define _PIN_OUT 1
+#	define _PIN_OUT 5
 #endif
 
 
@@ -250,9 +250,9 @@
 
 
 // Gateway Ident definitions. Where is the gateway located?
-#define _DESCRIPTION "ESP Gateway"			// Name of the gateway
-#define _EMAIL "mw12554@hotmail.com"		// Owner
-#define _PLATFORM "ESP8266"
+#define _DESCRIPTION "eui-500291ffff828d5c"			// Name of the gateway
+#define _EMAIL "jancee.wang@qq.com"		// Owner
+#define _PLATFORM "ESP32"
 #define _LAT 52.237367
 #define _LON 5.978654
 #define _ALT 14								// Altitude
@@ -261,7 +261,7 @@
 // ntp
 // Please add daylight saving time to NTP_TIMEZONES when desired
 #define NTP_TIMESERVER "nl.pool.ntp.org"	// Country and region specific
-#define NTP_TIMEZONES	2					// How far is our Timezone from UTC (excl daylight saving/summer time)
+#define NTP_TIMEZONES	8					// How far is our Timezone from UTC (excl daylight saving/summer time)
 #define SECS_IN_HOUR	3600
 #define NTP_INTR 0							// Do NTP processing with interrupts or in loop();
 
@@ -336,5 +336,5 @@
 
 // MQTT definitions, these settings should be standard for TTN
 // and need no changing
-#define _TTNSERVER "router.eu.thethings.network"
+#define _TTNSERVER "sensecap-stts-sg-1.seeed.cc"
 #define _TTNPORT 1700							// Standard port for TTN

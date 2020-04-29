@@ -258,13 +258,25 @@ struct pins {
 
 
 #else
+struct pins {
+	uint8_t dio0=26;		// GPIO26 / Dio0 used for one frequency and one SF
+	uint8_t dio1=26;		// GPIO33 / Used for CAD, may or not be shared with DIO0
+	uint8_t dio2=26;		// GPIO32 / Used for frequency hopping, don't care
+	uint8_t ss=18;			// GPIO18 / CS. Select pin connected to GPIO18
+	uint8_t rst=23;			// GPIO14 / D3. Reset pin not used	
+} pins;
+#define SCK 5
+#define MISO 19
+#define MOSI 27
+#define RST 23
+#define SS 18
 // ----------------------------------------------------------------------------
 // Use your own pin definitions, and comment #error line below
 // MISO 12 / D6
 // MOSI 13 / D7
 // CLK  14 / D5
 // SS   16 / D0
-#error "Pin Definitions _PIN_OUT must be defined in loraModem.h"
+// #error "Pin Definitions _PIN_OUT must be defined in loraModem.h"
 #endif
 
 // stat_t contains the statistics that are kept for a message. 

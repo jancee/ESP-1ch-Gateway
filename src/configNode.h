@@ -163,7 +163,7 @@ struct wpas {
 // below. This is needed to get the gateway working
 //
 wpas wpa[] = {
-	{ "platenspeler", "maanlama@16" }
+	{ "jancee-merlin24", "iloveyou" }
 };
 
 
