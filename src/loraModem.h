@@ -260,8 +260,8 @@ struct pins {
 #else
 struct pins {
 	uint8_t dio0=26;		// GPIO26 / Dio0 used for one frequency and one SF
-	uint8_t dio1=26;		// GPIO33 / Used for CAD, may or not be shared with DIO0
-	uint8_t dio2=26;		// GPIO32 / Used for frequency hopping, don't care
+	uint8_t dio1=34;		// GPIO33 / Used for CAD, may or not be shared with DIO0
+	uint8_t dio2=35;		// GPIO32 / Used for frequency hopping, don't care
 	uint8_t ss=18;			// GPIO18 / CS. Select pin connected to GPIO18
 	uint8_t rst=23;			// GPIO14 / D3. Reset pin not used	
 } pins;
