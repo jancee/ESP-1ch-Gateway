@@ -252,7 +252,7 @@ int buildPacket(uint8_t *buff_up, struct LoraUp *LoraUp, bool internal)
     int16_t rssicorr;
 	int16_t prssi;										// packet rssi
 	
-	char cfreq[12] = {0};								// Character array to hold freq in MHz
+	double cfreq = 0;								// Character array to hold freq in MHz
 	uint16_t buff_index=0;
 	char b64[256];
 	
@@ -477,7 +477,6 @@ int buildPacket(uint8_t *buff_up, struct LoraUp *LoraUp, bool internal)
 // More versions are defined for the moment, in order to keep timing as low as [possible. 
 // The serializeJson() version hopefully is quicker
 
-#define _JSONENCODE
 #ifdef _JSONENCODE
 //------------------
 	StaticJsonDocument<400> doc;
@@ -509,7 +508,7 @@ int buildPacket(uint8_t *buff_up, struct LoraUp *LoraUp, bool internal)
 
 #else // _JSONENCODE undefined or ==0, this is default
 // -----------------
-	ftoa((double)freqs[gwayConfig.ch].upFreq / 1000000, cfreq, 6);		// XXX This can be done better
+	cfreq = (double)freqs[gwayConfig.ch].upFreq / 1000000;
 	if ((LoraUp->sf<6) || (LoraUp->sf>12)) { 				// Lora datarate & bandwidth SF6-SF12, 16-19 useful chars */
 		LoraUp->sf=7;
 	}			
@@ -521,7 +520,7 @@ int buildPacket(uint8_t *buff_up, struct LoraUp *LoraUp, bool internal)
 
 	buff_index += snprintf((char *)(buff_up + buff_index), 
 		TX_BUFF_SIZE-buff_index, 
-		"\"chan\":%1u,\"rfch\":%1u,\"freq\":%s,\"stat\":1,\"modu\":\"LORA\"" , 
+		"\"chan\":%1u,\"rfch\":%1u,\"freq\":%.6f,\"stat\":1,\"modu\":\"LORA\"" , 
 		0, 0, cfreq);
 	
 	buff_index += snprintf((char *)(buff_up + buff_index), TX_BUFF_SIZE-buff_index
