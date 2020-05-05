@@ -477,6 +477,7 @@ int buildPacket(uint8_t *buff_up, struct LoraUp *LoraUp, bool internal)
 // More versions are defined for the moment, in order to keep timing as low as [possible. 
 // The serializeJson() version hopefully is quicker
 
+#define _JSONENCODE
 #ifdef _JSONENCODE
 //------------------
 	StaticJsonDocument<400> doc;
